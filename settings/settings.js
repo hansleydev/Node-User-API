@@ -1,0 +1,17 @@
+module.exports = {
+  PORT: process.env.PORT || 4000,
+  NODE_ENV: process.env.NODE_ENV,
+  origin: process.env.ORIGIN,
+  sessionAge: 1000 * 60 * 60 * 2,
+  sessionSecret: process.env.SESSION_SECRET,
+  DB_HOST: process.env.DB_HOST,
+  DB_DBNAME: process.env.DB_DBNAME,
+  DB_USER: process.env.DB_USER,
+  DB_PASSWORD: process.env.DB_PASSWORD,
+  DB_PORT: process.env.DB_PORT,
+  DB_HOST2: process.env.DB_HOST2,
+  DB_DBNAME2: process.env.DB_DBNAME2,
+  DB_USER2: process.env.DB_USER2,
+  DB_PASSWORD2: process.env.DB_PASSWORD2,
+  DB_PORT2: process.env.DB_PORT2,
+};
