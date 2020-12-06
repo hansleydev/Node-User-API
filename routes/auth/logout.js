@@ -14,16 +14,25 @@ const router = express.Router();
     Access: Public
 */
 
-router.post("/", (req, res) => {
-  if (req.isAuthenticated()) {
-    req.logOut();
+router.post("/", async (req, res) => {
+  try {
+    if (req.isAuthenticated()) {
+      await req.logOut();
+      await req.session.destroy();
+    }
+
+    let response = {
+      message: "User logged out.",
+    };
+
+    return res.status(200).json(response);
+  } catch (error) {
+    let response = {
+      message: "Could not log out.",
+    };
+
+    return res.status(500).json(response);
   }
-
-  let response = {
-    message: "User logged out.",
-  };
-
-  return res.status(200).json(response);
 });
 
 module.exports = router;
