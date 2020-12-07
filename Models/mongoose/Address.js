@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 // Instantiate Mongoose Schema
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 // --------------------- Create Address Schema ---------------------
 

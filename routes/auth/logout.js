@@ -21,13 +21,13 @@ router.post("/", async (req, res) => {
       await req.session.destroy();
     }
 
-    let response = {
+    const response = {
       message: "User logged out.",
     };
 
     return res.status(200).json(response);
   } catch (error) {
-    let response = {
+    const response = {
       message: "Could not log out.",
     };
 

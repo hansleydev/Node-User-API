@@ -36,7 +36,7 @@ const initializePassport = async (passport) => {
         }
       } catch (error) {
         console.error(error);
-        return await done(error);
+        return done(error);
       }
     };
 
@@ -51,7 +51,7 @@ const initializePassport = async (passport) => {
         return await done(null, user.id);
       } catch (error) {
         console.error(error);
-        return await done(error);
+        return done(error);
       }
     });
 
@@ -63,7 +63,7 @@ const initializePassport = async (passport) => {
         return await done(null, user);
       } catch (error) {
         console.log(error);
-        return await done(error);
+        return done(error);
       }
     });
   } catch (error) {

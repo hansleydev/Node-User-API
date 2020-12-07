@@ -6,12 +6,12 @@ const MongoStore = require("connect-mongo")(session);
 
 // --------------------- Import Database Configuration ---------------------
 
-const { DB_HOST2, DB_DBNAME2, DB_USER2, DB_PASSWORD2, DB_PORT2 } = require("../settings/settings");
+const { DB_HOST2, DB_DBNAME2, DB_USER2, DB_PASSWORD2, DB_PORT2 } = require("./settings");
 
 // Create Mongoose Connection
 
 const connection = mongoose.createConnection(
-  "mongodb://" + DB_HOST2 + ":" + DB_PORT2 + "/" + DB_DBNAME2 + "?ssl=true&replicaSet=globaldb",
+  `mongodb://${DB_HOST2}:${DB_PORT2}/${DB_DBNAME2}?ssl=true&replicaSet=globaldb`,
   {
     auth: {
       user: DB_USER2,

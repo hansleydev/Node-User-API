@@ -9,7 +9,7 @@ const { DB_HOST, DB_DBNAME, DB_USER, DB_PASSWORD, DB_PORT } = require("../settin
 const connectDB = async () => {
   try {
     await mongoose.connect(
-      "mongodb://" + DB_HOST + ":" + DB_PORT + "/" + DB_DBNAME + "?ssl=true&replicaSet=globaldb",
+      `mongodb://${DB_HOST}:${DB_PORT}/${DB_DBNAME}?ssl=true&replicaSet=globaldb`,
       {
         auth: {
           user: DB_USER,
@@ -26,6 +26,7 @@ const connectDB = async () => {
     return console.log("Database Connected.");
   } catch (error) {
     console.error(error);
+    // eslint-disable-next-line no-process-exit
     return process.exit(1);
   }
 };

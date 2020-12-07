@@ -19,7 +19,7 @@ const setUserToDelete = async (req, res, next) => {
     const { email } = req.user;
 
     if (!email) {
-      let response = {
+      const response = {
         message: "Cannot not find email.",
       };
 
@@ -71,7 +71,7 @@ const setUserToDelete = async (req, res, next) => {
       return next();
     }
   } catch (error) {
-    let response = {
+    const response = {
       message: "Could not set user to be deleted.",
       error,
     };

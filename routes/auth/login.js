@@ -34,11 +34,11 @@ router.post("/", passport.authenticate("local"), (req, res) => {
 
     return res.status(200).json(response);
   } else {
-    let response = {
+    const response = {
       message: "Please enable cookies in your browser settings.",
     };
 
-    res.status(403).json(message);
+    return res.status(403).json(response);
   }
 });
 

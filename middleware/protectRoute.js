@@ -13,7 +13,7 @@ const protectRoute = async (req, res, next) => {
         if (req.user.email === req.params.email) {
           return next();
         } else {
-          let response = {
+          const response = {
             message: "User not authorized.",
           };
 
@@ -22,7 +22,7 @@ const protectRoute = async (req, res, next) => {
           return res.status(403).json(response);
         }
       } else {
-        let response = {
+        const response = {
           message: "User not authenticated.",
         };
 
@@ -31,7 +31,7 @@ const protectRoute = async (req, res, next) => {
         return res.status(403).json(response);
       }
     } else {
-      let response = {
+      const response = {
         message: "User not signed in.",
       };
 
@@ -40,7 +40,7 @@ const protectRoute = async (req, res, next) => {
       return res.status(403).json(response);
     }
   } catch (error) {
-    let response = {
+    const response = {
       message: "Could check authentication and authorization status.",
       error,
     };

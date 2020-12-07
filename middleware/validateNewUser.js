@@ -28,7 +28,7 @@ const validateNewUser = async (req, res, next) => {
     if (isValid) {
       return next();
     } else {
-      let response = {
+      const response = {
         message: "Failed user validation.",
       };
 
@@ -37,7 +37,7 @@ const validateNewUser = async (req, res, next) => {
       return res.status(403).json(response);
     }
   } catch (error) {
-    let response = {
+    const response = {
       message: "Failed user validation.",
       error,
     };

@@ -5,7 +5,6 @@ const moment = require("moment");
 // --------------------- Import Models ---------------------
 
 const { User } = require("../Models/mongoose/User");
-const { Credentials } = require("../Models/mongoose/Credentials");
 
 // --------------------- Create Update User Task ---------------------
 
@@ -16,7 +15,7 @@ const updateUser = async (req, res) => {
     const { email } = req.user;
 
     if (!email) {
-      let response = {
+      const response = {
         message: "Cannot not find email.",
       };
 
@@ -30,7 +29,7 @@ const updateUser = async (req, res) => {
         { lastUpdated: moment().format("MMMM Do YYYY, h:mm:ss a") }
       );
 
-      let response = {
+      const response = {
         message: "User Updated.",
         user: req.user,
       };
@@ -40,7 +39,7 @@ const updateUser = async (req, res) => {
       return res.status(200).json(response);
     }
   } catch (error) {
-    let response = {
+    const response = {
       message: "Could not update user.",
       error,
     };

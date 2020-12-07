@@ -7,7 +7,8 @@ const cookieParser = require("cookie-parser");
 
 const cors = require("cors");
 const helmet = require("helmet");
-const csrf = require("csurf");
+// const csrf = require("csurf");
+const OS = require("os");
 
 const session = require("express-session");
 const passport = require("passport");
@@ -52,7 +53,7 @@ app.use(async (req, res, next) => {
     await res.header("Access-Control-Allow-Credentials", true);
     return await next();
   } catch (error) {
-    let response = {
+    const response = {
       message: "Could not set response headers.",
       error,
     };
@@ -99,11 +100,11 @@ app.use(
     secret: sessionSecret,
     resave: false,
     saveUninitialized: true,
-    proxy: NODE_ENV == "production" ? true : false,
+    proxy: NODE_ENV == "production" && true,
     cookie: {
-      domain: NODE_ENV == "production" ? "hansleyp.org" : undefined,
+      domain: NODE_ENV == "production" && "hansleyp.org",
       maxAge: sessionAge,
-      secure: NODE_ENV == "production" ? true : false,
+      secure: NODE_ENV == "production" && true,
       sameSite: "lax",
     },
   })
@@ -222,30 +223,26 @@ app.use("/api/users", userAPI);
 
 // --------------------- Start Server ---------------------
 
-try {
-  if (!PORT) {
-    throw new Error("Port not set.");
-  } else {
-    app.listen(PORT, () => {
-      if (NODE_ENV === "development") {
-        return console.log("Environment: Development.");
-      } else if (NODE_ENV === "production") {
-        return console.log("Environment: Production.");
-      } else if (!NODE_ENV) {
-        throw new Error("Environment not set.");
-      } else {
-        throw new Error("Environment invalid.");
-      }
-    });
+if (!PORT) {
+  throw new Error("Port not set.");
+} else {
+  app.listen(PORT, () => {
+    if (NODE_ENV === "development") {
+      return console.log("Environment: Development.");
+    } else if (NODE_ENV === "production") {
+      return console.log("Environment: Production.");
+    } else if (!NODE_ENV) {
+      throw new Error("Environment not set.");
+    } else {
+      throw new Error("Environment invalid.");
+    }
+  });
 
-    console.log(`Server started on port: ${PORT}.`);
-  }
-} catch (error) {
-  throw error;
+  console.log(`Server started on port: ${PORT}.`);
 }
 
-if (NODE_ENV === "development") {
-  const OS = require("os");
+// Check
 
+if (NODE_ENV === "development") {
   console.log(`CPU count: ${OS.cpus().length}.`);
 }

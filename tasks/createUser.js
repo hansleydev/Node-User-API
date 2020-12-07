@@ -23,7 +23,7 @@ const createUser = async (req, res) => {
     const credentialsExist = await Credentials.findOne({ email });
 
     if (credentialsExist) {
-      let response = {
+      const response = {
         message: "User already exist.",
       };
 
@@ -44,9 +44,8 @@ const createUser = async (req, res) => {
     const userExists = await User.findOne({ email });
 
     if (userExists) {
-      let response = {
+      const response = {
         message: "User already exist.",
-        error,
       };
 
       console.error(response);
@@ -62,14 +61,14 @@ const createUser = async (req, res) => {
 
       await newUser.save();
 
-      let response = {
+      const response = {
         message: "User created.",
       };
 
       return res.status(201).json(response);
     }
   } catch (error) {
-    let response = {
+    const response = {
       message: "Failed validation.",
       error,
     };

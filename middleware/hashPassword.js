@@ -2,10 +2,6 @@
 
 const bcrypt = require("bcrypt");
 
-// --------------------- Import Models ---------------------
-
-const { Credentials } = require("../Models/mongoose/Credentials");
-
 // Set Salt Rounds
 
 const salt = 10;
@@ -24,7 +20,7 @@ const hashPassword = async (req, res, next) => {
 
     return next();
   } catch (error) {
-    let response = {
+    const response = {
       message: "Could not hash password.",
       error,
     };

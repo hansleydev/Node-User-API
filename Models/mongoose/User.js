@@ -13,7 +13,7 @@ const IsDeletedSchema = require("./IsDeleted");
 
 // Instantiate Mongoose Schema
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 // --------------------- Create User Schema ---------------------
 

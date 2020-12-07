@@ -12,7 +12,7 @@ const deleteUser = async (req, res) => {
     const { email } = req.user;
 
     if (!email) {
-      let response = {
+      const response = {
         message: "Cannot not find email.",
       };
 
@@ -24,13 +24,13 @@ const deleteUser = async (req, res) => {
       const credentials = await Credentials.findOne({ email });
 
       if (!user || !credentials) {
-        let response = {
+        const response = {
           message: `Could not find the user linked to ${email}.`,
         };
 
         res.status(404).json(response);
 
-        return console.error(error);
+        return console.error(response);
       } else {
         // Log Out
 
@@ -41,7 +41,7 @@ const deleteUser = async (req, res) => {
         await User.deleteOne(user);
         await Credentials.deleteOne(credentials);
 
-        let response = {
+        const response = {
           message: `Deleted user.`,
         };
 
@@ -51,7 +51,7 @@ const deleteUser = async (req, res) => {
       }
     }
   } catch (error) {
-    let response = {
+    const response = {
       message: "Could not delete user.",
       error,
     };
