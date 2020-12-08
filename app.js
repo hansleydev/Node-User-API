@@ -123,13 +123,7 @@ app.use(passport.session());
 
 // --------------------- Connect Database ---------------------
 
-// Import Connect Databse Task
-
-const connectDB = require("./tasks/connectDB");
-
-// Connect Database
-
-connectDB();
+require("./tasks/connectDB")();
 
 // // CSRF Middleware
 
@@ -193,6 +187,12 @@ app.use("/auth/logout", authLogout);
 const userAPI = require("./routes/api/users");
 
 app.use("/api/users", userAPI);
+
+app.get("/", (req, res) => {
+  return res.send(
+    "<div style='dsiplay: flex; justify-content: center'><h3 style='text-align: center'>Dashboard API</h3></div>"
+  );
+});
 
 // // Default Route
 

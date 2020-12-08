@@ -7,7 +7,7 @@ const moment = require("moment");
 
 const AddressSchema = require("./Address");
 
-// Import Soft Deleted Subdocument
+// Import Soft Delete Subdocument
 
 const IsDeletedSchema = require("./IsDeleted");
 
